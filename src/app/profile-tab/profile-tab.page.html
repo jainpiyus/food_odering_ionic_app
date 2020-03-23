@@ -1,0 +1,48 @@
+<ion-header style="height: 200px;">
+  <ion-toolbar color="primary" class="full-height flex-middle">
+
+    <ion-title class="ion-text-center">
+      <h1 class="bold">RED THEMES</h1>
+    </ion-title>
+  </ion-toolbar>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-icon  name="color-fill" color="light" (click)="openThemePopover()"></ion-icon>
+  </ion-fab>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!loggedIn">
+    <ion-segment (ionChange)="segmentChanged($event)" color="primary">
+      <ion-segment-button value="login" [checked]="selectedSegment === 'login'">
+        <ion-label>Login</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="signup" [checked]="selectedSegment === 'signup'">
+        <ion-label>Signup</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <app-login *ngIf="selectedSegment === 'login'"></app-login>
+    <app-signup *ngIf="selectedSegment === 'signup'"></app-signup>
+  </div>
+  <div *ngIf="loggedIn">
+    <ion-segment (ionChange)="segmentChanged($event)" color="primary">
+      <ion-segment-button value="myprofile" [checked]="selectedSegment === 'myprofile'">
+        <ion-label>Profile</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="orders" [checked]="selectedSegment === 'orders'">
+        <ion-label>Orders</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="address" [checked]="selectedSegment === 'address'">
+        <ion-label>Address</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <app-my-profile *ngIf="selectedSegment === 'myprofile'"></app-my-profile>
+    <app-orders-history *ngIf="selectedSegment === 'orders'"></app-orders-history>
+    <app-saved-address *ngIf="selectedSegment === 'address'"></app-saved-address>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="selectedSegment === 'address'">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

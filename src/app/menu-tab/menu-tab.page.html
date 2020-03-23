@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Our Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment scrollable [value]="selectedCategory" (ionChange)="onCategoryTabChange($event)">
+    <ion-segment-button *ngFor="let category of categories" [value]="category">
+      {{category}}
+    </ion-segment-button>
+  </ion-segment>
+  <ion-card *ngFor="let product of viewProducts">
+   
+    <ion-card-content class="no-padding" (click)="onProductClick()">
+      <img [src]="product.imgPath" height="200px" width="100%" alt="image">
+    </ion-card-content>
+    <ion-card-header>
+      <ion-card-subtitle>{{product.name}}</ion-card-subtitle>
+      <ion-card-title>${{product.price}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

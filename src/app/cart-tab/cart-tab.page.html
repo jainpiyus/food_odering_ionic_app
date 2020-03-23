@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>My Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-cart-list></app-cart-list>
+</ion-content>
+
+<ion-footer>
+  <div class="flex-item-center">
+    <div class="flex2 flex-middle">
+      <ion-text color="secondary">
+        <span>Sub total: {{350 | currency:'INR'}}</span>
+      </ion-text>
+    </div>
+    <div class="flex1">
+      <ion-button expand="full" fill="solid">Checkout</ion-button>
+    </div>
+  </div>
+</ion-footer>

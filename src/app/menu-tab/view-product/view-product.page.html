@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="single-product-container">
+
+    <div style="position: relative;">
+      <img src="https://flipdish.imgix.net/97vyjxztCOKNO8YYB8OkKjE13Zw.jpg?w=1080&h=720" height="300px">
+      <div class="price">$12.50</div>
+      <div class="product-name">Cheese burst pizza</div>
+    </div>
+    <ion-list *ngFor="let variant of variants">
+      <ion-radio-group allow-empty-selection>
+        <ion-list-header>
+          <ion-label style="font-size: 18px;" color="primary" class="bold">{{variant.name}}</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let child of variant.childVariants">
+          <ion-label>{{child.name}}</ion-label>
+          <ion-radio slot="start" color="primary" [value]="child.name"></ion-radio>
+          <ion-chip slot="end" *ngIf="child.price" color="primary">
+            <ion-label>+${{child.price}}</ion-label>
+          </ion-chip>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label style="font-size: 18px;" color="primary" class="bold">AdOns</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let addOn of addOns">
+        <ion-label>{{addOn.name}}</ion-label>
+        <ion-checkbox slot="start" color="primary"></ion-checkbox>
+        <ion-chip slot="end" *ngIf="addOn.price" color="primary">
+          <ion-label>+${{addOn.price}}</ion-label>
+        </ion-chip>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button class="no-border-radius" expand="full" no-margin fill="solid" expand="block">Add to cart</ion-button>
+</ion-footer>
